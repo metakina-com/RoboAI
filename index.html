@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboAI - 机器人即服务区块链AI平台</title>
+    <style>
+        :root {
+            --primary: #3182ce;
+            --secondary: #805ad5;
+            --accent: #7f9cf5;
+            --dark: #1a202c;
+            --light: #f7fafc;
+            --success: #48bb78;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header styles */
+        header {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 2.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Hero section */
+        .hero {
+            padding-top: 6rem;
+            padding-bottom: 5rem;
+            background: url('/api/placeholder/1200/600') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 32, 44, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 4rem 1rem;
+            color: white;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .button-primary {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .button-primary:hover, .button-secondary:hover {
+            opacity: 0.9;
+        }
+        
+        /* Features section */
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #4a5568;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* How it works section */
+        .how-it-works {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .step-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Ecosystem section */
+        .ecosystem {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .ecosystem-diagram {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .ecosystem-center {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ecosystem-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+        
+        .ecosystem-item {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .ecosystem-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        /* Use cases section */
+        .use-cases {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .use-cases-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: white;
+            color: var(--dark);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .tab-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .use-case-item {
+            display: none;
+        }
+        
+        .use-case-item.active {
+            display: block;
+        }
+        
+        .use-case-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Partners section */
+        .partners {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .partner-logo {
+            height: 60px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+        }
+        
+        /* Roadmap section */
+        .roadmap {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            box-shadow: 0 0 0 4px white;
+        }
+        
+        .timeline-content {
+            width: 80%;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Team section */
+        .team {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .member-bio {
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+        
+        /* CTA section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .cta-input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            outline: none;
+        }
+        
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--light);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-branding img {
+            height: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-description {
+            color: #a0aec0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 2rem;
+            height: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #a0aec0;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #a0aec0;
+            font-size: 0.875rem;
+        }
+        
+        .footer-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-menu a {
+            color: #a0aec0;
+            transition: color 0.3s;
+        }
+        
+        .footer-menu a:hover {
+            color: white;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .timeline-item {
+                padding-right: 0;
+                padding-left: 4rem;
+            }
+            
+            .timeline-item:nth-child(even) {
+                padding-left: 4rem;
+            }
+            
+            .timeline-dot {
+                left: 2rem;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .cta-form {
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .footer-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/api/placeholder/48/48" alt="RoboAI Logo">
+                    <span class="logo-text">RoboAI</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">功能</a>
+                    <a href="#how-it-works">工作原理</a>
+                    <a href="#ecosystem">生态系统</a>
+                    <a href="#use-cases">应用场景</a>
+                    <a href="#roadmap">发展路线</a>
+                    <a href="#team">团队</a>
+                    <a href="#" class="cta-button">立即开始</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">区块链赋能机器人即服务平台</h1>
+                <p class="hero-subtitle">通过NFT化机器人功能、代币化机器人收益，以及RWA云服务，彻底改变机器人行业的商业模式</p>
+                <div class="hero-buttons">
+                    <a href="#" class="button-primary">申请演示</a>
+                    <a href="#" class="button-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <p class="section-subtitle">RoboAI平台集成了区块链、大语言模型和机器人技术，提供一套完整的机器人即服务解决方案</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">机器人资产数字化</h3>
+                    <p>将实体机器人通过数字孪生技术映射为区块链上的NFT资产，实现真实世界资产的透明管理</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">RaaS综合服务平台</h3>
+                    <p>提供跨厂商、跨型号的机器人统一管理界面，实现远程监控、诊断和智能调度</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">区块链交易市场</h3>
+                    <p>支持按时、按次、按效果等多种灵活租赁模式，智能合约自动执行，确保交易公平</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">机器人收益代币化</h3>
+                    <p>将机器人产生的收益自动分配给权益持有者，支持收益预测、流动性挖矿和治理参与</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">大语言模型赋能</h3>
+                    <p>基于LLM提供自然语言交互界面，支持多模态任务定义和智能客服支持</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">金融服务生态</h3>
+                    <p>提供机器人抵押贷款、收益权融资、保险服务和跨境支付等金融服务</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">工作原理</h2>
+            <p class="section-subtitle">RoboAI平台通过创新的区块链技术，实现机器人资产的数字化管理和收益分配</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">机器人资产NFT化</h3>
+                        <p>机器人厂商或拥有者可以将机器人资产数字化，创建唯一的NFT资产，记录所有权和性能参数</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">功能模块订阅与交易</h3>
+                        <p>用户可以按需订阅机器人的特定功能模块，通过智能合约自动支付和验证服务质量</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">统一管理与监控</h3>
+                        <p>平台提供统一的管理界面，实时监控机器人状态、性能数据和运营指标</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">收益自动分配</h3>
+                        <p>机器人产生的收益通过智能合约自动分配给权益持有者，全程透明可追溯</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 class="step-title">增值金融服务</h3>
+                        <p>平台提供基于机器人资产的贷款、保险和投资产品，增加资产流动性和收益潜力</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ecosystem Section -->
+    <section class="ecosystem" id="ecosystem">
+        <div class="container">
+            <h2 class="section-title">生态系统</h2>
+            <p class="section-subtitle">RoboAI打造完整的机器人区块链服务生态，连接各方参与者创造共赢</p>
+            <div class="ecosystem-diagram">
+                <div class="ecosystem-center">RoboAI<br>平台</div>
+                <div class="ecosystem-items">
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">机器人研发商</h3>
+                        <p>获得统一销售渠道、新收入模式和宝贵用户数据</p>
+                    </div>
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">机器人运营商</h3>
+                        <p>降低初始投资、统一管理平台、多元化收入来源</p>
+                    </div>
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">终端用户</h3>
+                        <p>按需使用，提高灵活性，享受优质服务体验</p>
+                    </div>
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">开发者</h3>
+                        <p>创建应用和功能模块，扩展平台生态系统</p>
+                    </div>
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">投资者</h3>
+                        <p>接触真实世界资产的区块链投资机会</p>
+                    </div>
+                    <div class="ecosystem-item">
+                        <h3 class="ecosystem-item-title">金融服务商</h3>
+                        <p>提供创新金融产品，拓展客户群体</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <p class="section-subtitle">RoboAI平台适用于多种行业场景，为不同领域提供创新解决方案</p>
+            <div class="use-cases-tabs">
+                <button class="tab-button active" data-tab="logistics">物流仓储</button>
+                <button class="tab-button" data-tab="retail">零售服务</button>
+                <button class="tab-button" data-tab="hotel">酒店接待</button>
+                <button class="tab-button" data-tab="manufacturing">智能制造</button>
+                <button class="tab-button" data-tab="medical">医疗辅助</button>
+            </div>
+            <div class="tab-content">
+                <div class="use-case-item active" id="logistics">
+                    <h3 class="use-case-title">物流仓储自动化</h3>
+                    <p>在现代仓储中，多种机器人协同工作变得越来越普遍。RoboAI平台可以将不同品牌、不同功能的机器人整合到一个统一的管理系统中，通过RaaS模式降低初始投资成本。</p>
+                    <p>企业可以根据订单量的季节性变化灵活调整机器人数量，只为实际使用的服务付费。同时，机器人产生的工作数据被安全记录在区块链上，为性能优化和故障预测提供依据。</p>
+                    <p>物流公司还可以通过代币化机器人的未来收益，提前获取资金用于扩大规模或技术升级。</p>
+                </div>
+                <div class="use-case-item" id="retail">
+                    <h3 class="use-case-title">零售服务创新</h3>
+                    <p>零售业中的服务机器人可以承担商品引导、库存盘点、顾客互动等多种任务。通过RoboAI平台，零售商可以灵活订阅所需的机器人功能，而不必一次性购买高价设备。</p>
+                    <p>平台的大语言模型支持使零售机器人能够理解复杂的客户询问，提供智能化的购物建议。机器人收集的客户互动数据被安全存储，帮助零售商优化商品陈列和营销策略。</p>
+                    <p>在促销季等高峰期，零售商可以临时增加机器人数量，提高服务能力，而在淡季则可以减少使用量，实现成本的精确控制。</p>
+                </div>
+                <div class="use-case-item" id="hotel">
+                    <h3 class="use-case-title">酒店接待自动化</h3>
+                    <p>酒店业可以利用RoboAI平台整合前台接待、客房服务、行李搬运等不同功能的服务机器人。通过RaaS模式，酒店可以降低自动化改造的初始成本，按实际入住率灵活调整服务规模。</p>
+                    <p>平台的多语言支持使机器人能够为国际旅客提供母语服务，大幅提升客户体验。区块链技术确保客人数据的安全性和隐私保护，同时实现机器人服务质量的透明评价。</p>
+                    <p>酒店还可以通过平台的金融服务模块，以未来机器人服务收益为抵押获取融资，加速智能化转型。</p>
+                </div>
+                <div class="use-case-item" id="manufacturing">
+                    <h3 class="use-case-title">智能制造升级</h3>
+                    <p>制造业企业可以通过RoboAI平台实现生产线上不同工业机器人的统一管理和协同工作。基于区块链的透明记录确保生产过程的可追溯性，提高产品质量控制能力。</p>
+                    <p>中小型制造企业可以通过RaaS模式降低自动化改造门槛，选择性订阅所需的机器人功能模块，实现渐进式的智能化转型。平台的预测性维护功能可以大幅降低停机风险和维护成本。</p>
+                    <p>制造企业还可以通过平台提供的API接口，将机器人系统与现有ERP、MES系统无缝集成，实现端到端的数字化管理。</p>
+                </div>
+                <div class="use-case-item" id="medical">
+                    <h3 class="use-case-title">医疗辅助服务</h3>
+                    <p>医疗机构可以通过RoboAI平台整合消毒、物流配送、陪护等不同类型的医疗辅助机器人。基于区块链的安全记录确保医疗数据的隐私保护和不可篡改性，符合医疗行业的严格合规要求。</p>
+                    <p>平台的大语言模型支持使陪护机器人能够进行自然、温暖的患者互动，提供心理安慰和基础健康咨询。医院可以根据病房使用率和季节性疫情变化，灵活调整机器人服务规模。</p>
+                    <p>医疗机构还可以利用平台的开发者工具，定制专科特定需求的机器人应用，如康复训练辅助、老年人跌倒监测等。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2 class="section-title">合作伙伴</h2>
+            <p class="section-subtitle">我们与领先的机器人研发商、区块链基础设施提供商和行业领导者合作</p>
+            <div class="partners-logos">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2 class="section-title">发展路线</h2>
+            <p class="section-subtitle">RoboAI平台将按照清晰的路线图进行开发和扩展</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 Q2-Q3</div>
+                        <h3 class="timeline-title">概念验证阶段</h3>
+                        <p>完成产品概念设计，发布技术白皮书，建立初始开发团队，完成种子轮融资</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 Q4</div>
+                        <h3 class="timeline-title">Alpha版本发布</h3>
+                        <p>基础区块链架构上线，首批5家机器人厂商接入，完成基本管理界面，铸造首批机器人NFT</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026 Q1-Q2</div>
+                        <h3 class="timeline-title">Beta版本发布</h3>
+                        <p>交易市场功能上线，大语言模型功能集成，完成20家机器人厂商接入，启动第一个城市试点项目</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026 Q3-Q4</div>
+                        <h3 class="timeline-title">正式版1.0发布</h3>
+                        <p>完整平台功能上线，启动全国市场推广，金融服务模块上线，用户数量达到1000家</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2027年</div>
+                        <h3 class="timeline-title">国际化扩展</h3>
+                        <p>进入亚太主要市场，多语言支持，跨境支付完全支持，接入机器人数量超过5000台</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2028年</div>
+                        <h3 class="timeline-title">生态系统完善</h3>
+                        <p>开发者生态成熟，完善金融服务产品线，建立行业标准影响力，平台交易额突破5亿美元</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title">核心团队</h2>
+            <p class="section-subtitle">我们的团队由区块链、人工智能和机器人领域的专家组成</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="CEO" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">张明</h3>
+                        <div class="member-role">首席执行官 (CEO)</div>
+                        <p class="member-bio">拥有区块链和机器人行业双重背景的资深企业家，曾任知名科技公司高管，在人工智能和分布式系统领域拥有15年经验。</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="CTO" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">李强</h3>
+                        <div class="member-role">首席技术官 (CTO)</div>
+                        <p class="member-bio">区块链技术专家，拥有大规模分布式系统开发经验，曾领导多个知名区块链项目，拥有多项区块链专利。</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="COO" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">王海</h3>
+                        <div class="member-role">首席运营官 (COO)</div>
+                        <p class="member-bio">具有平台运营和生态建设经验的高管，曾在国际科技公司负责产品管理和业务发展，拥有丰富的机器人行业资源。</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="CFO" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">林菲</h3>
+                        <div class="member-role">首席财务官 (CFO)</div>
+                        <p class="member-bio">具有金融科技背景的财务专家，曾在知名投资银行和科技公司担任高级财务职位，对区块链金融和资产证券化有深入研究。</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="CBDO" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">赵楠</h3>
+                        <div class="member-role">首席业务发展官 (CBDO)</div>
+                        <p class="member-bio">负责业务发展和合作伙伴关系的高管，拥有丰富的机器人行业资源和商务拓展经验，曾成功建立多个战略合作伙伴关系。</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="AI Director" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">陈智</h3>
+                        <div class="member-role">人工智能总监</div>
+                        <p class="member-bio">AI专家，专注于大语言模型与机器人控制的融合，曾在顶尖科技公司领导AI研发团队，拥有多篇高影响力学术论文。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">准备好改变机器人服务的未来了吗？</h2>
+            <p class="cta-subtitle">立即加入RoboAI生态系统，体验区块链赋能的机器人即服务平台</p>
+            <form class="cta-form">
+                <input type="email" placeholder="输入您的电子邮箱" class="cta-input" required>
+                <button type="submit" class="cta-button">预约演示</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-branding">
+                    <img src="/api/placeholder/120/40" alt="RoboAI Logo">
+                    <p class="footer-description">
+                        RoboAI是一个创新型区块链云平台，整合机器人即服务(RaaS)与区块链技术，为机器人研发商、运营商和用户提供一站式服务生态系统。
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links-column">
+                    <h3 class="footer-title">平台</h3>
+                    <div class="footer-links">
+                        <a href="#features">功能</a>
+                        <a href="#how-it-works">工作原理</a>
+                        <a href="#ecosystem">生态系统</a>
+                        <a href="#use-cases">应用场景</a>
+                        <a href="#roadmap">发展路线</a>
+                    </div>
+                </div>
+                <div class="footer-links-column">
+                    <h3 class="footer-title">资源</h3>
+                    <div class="footer-links">
+                        <a href="#">文档</a>
+                        <a href="#">白皮书</a>
+                        <a href="#">API参考</a>
+                        <a href="#">开发者社区</a>
+                        <a href="#">技术博客</a>
+                    </div>
+                </div>
+                <div class="footer-links-column">
+                    <h3 class="footer-title">公司</h3>
+                    <div class="footer-links">
+                        <a href="#team">团队</a>
+                        <a href="#">关于我们</a>
+                        <a href="#">招贤纳士</a>
+                        <a href="#">联系我们</a>
+                        <a href="#">新闻动态</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">© 2025 RoboAI Technology. 保留所有权利。</div>
+                <div class="footer-menu">
+                    <a href="#">隐私政策</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">法律声明</a>
+                    <a href="#">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.use-case-item');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('header a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Sticky header on scroll
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>
