@@ -12,6 +12,13 @@
             --dark: #1a202c;
             --light: #f7fafc;
             --success: #48bb78;
+            --warning: #ed8936;    /* 新增警告色 */
+            --error: #e53e3e;      /* 新增错误色 */
+            --gray-100: #f7fafc;   /* 新增灰度色阶 */
+            --gray-300: #e2e8f0;
+            --gray-500: #a0aec0;
+            --gray-700: #4a5568;
+            --gray-900: #1a202c;
         }
         
         * {
@@ -742,12 +749,14 @@
     </style>
 </head>
 <body>
+    <!-- 引入SVG图标库 -->
+    <object type="image/svg+xml" data="icons.svg" style="display: none;"></object>
     <!-- Header -->
     <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <img src="/api/placeholder/48/48" alt="RoboAI Logo">
+                    <img src="/api/placeholder/48/48" alt="RoboAI Logo" loading="lazy">
                     <span class="logo-text">RoboAI</span>
                 </div>
                 <div class="nav-links">
@@ -767,8 +776,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">区块链赋能机器人即服务平台</h1>
-                <p class="hero-subtitle">通过NFT化机器人功能、代币化机器人收益，以及RWA云服务，彻底改变机器人行业的商业模式</p>
+                <h1 class="hero-title">机器人资产NFT化 · 收益代币化 · 服务云端化</h1>
+                <p class="hero-subtitle">RoboAI - 首个将区块链与机器人技术深度融合的一站式服务平台，为机器人行业带来革命性商业模式创新</p>
                 <div class="hero-buttons">
                     <a href="#" class="button-primary">申请演示</a>
                     <a href="#" class="button-secondary">了解更多</a>
@@ -789,17 +798,17 @@
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">机器人资产数字化</h3>
-                    <p>将实体机器人通过数字孪生技术映射为区块链上的NFT资产，实现真实世界资产的透明管理</p>
+                    <h3 class="feature-title">机器人资产NFT化</h3>
+                    <p>将实体机器人通过数字孪生技术映射为区块链上的NFT资产，实现所有权透明化、可分割化和流动性增强</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">RaaS综合服务平台</h3>
-                    <p>提供跨厂商、跨型号的机器人统一管理界面，实现远程监控、诊断和智能调度</p>
+                    <h3 class="feature-title">机器人收益代币化</h3>
+                    <p>通过智能合约自动将机器人产生的收益分配给权益持有者，支持多种灵活的收益分配模式和流动性挖矿</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -813,11 +822,11 @@
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">机器人收益代币化</h3>
-                    <p>将机器人产生的收益自动分配给权益持有者，支持收益预测、流动性挖矿和治理参与</p>
+                    <h3 class="feature-title">RaaS云服务平台</h3>
+                    <p>提供跨厂商、跨型号的机器人统一管理界面，支持远程监控、诊断和智能调度，降低运营成本</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -976,12 +985,12 @@
             <h2 class="section-title">合作伙伴</h2>
             <p class="section-subtitle">我们与领先的机器人研发商、区块链基础设施提供商和行业领导者合作</p>
             <div class="partners-logos">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
-                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="/api/placeholder/200/60" alt="Partner Logo" class="partner-logo" loading="lazy">
             </div>
         </div>
     </section>
@@ -1051,7 +1060,7 @@
             <p class="section-subtitle">我们的团队由区块链、人工智能和机器人领域的专家组成</p>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="CEO" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="CEO" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">张明</h3>
                         <div class="member-role">首席执行官 (CEO)</div>
@@ -1059,7 +1068,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="CTO" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="CTO" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">李强</h3>
                         <div class="member-role">首席技术官 (CTO)</div>
@@ -1067,7 +1076,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="COO" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="COO" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">王海</h3>
                         <div class="member-role">首席运营官 (COO)</div>
@@ -1075,7 +1084,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="CFO" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="CFO" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">林菲</h3>
                         <div class="member-role">首席财务官 (CFO)</div>
@@ -1083,7 +1092,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="CBDO" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="CBDO" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">赵楠</h3>
                         <div class="member-role">首席业务发展官 (CBDO)</div>
@@ -1091,7 +1100,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/api/placeholder/300/300" alt="AI Director" class="member-photo">
+                    <img src="/api/placeholder/300/300" alt="AI Director" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">陈智</h3>
                         <div class="member-role">人工智能总监</div>
@@ -1119,7 +1128,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-branding">
-                    <img src="/api/placeholder/120/40" alt="RoboAI Logo">
+                    <img src="/api/placeholder/120/40" alt="RoboAI Logo" loading="lazy">
                     <p class="footer-description">
                         RoboAI是一个创新型区块链云平台，整合机器人即服务(RaaS)与区块链技术，为机器人研发商、运营商和用户提供一站式服务生态系统。
                     </p>
